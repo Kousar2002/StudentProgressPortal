@@ -113,7 +113,10 @@ const [open, setOpen] = React.useState(false);
   return (
     <div>
       {/* Button to open drawer */}
-      <Button variant="contained" onClick={toggleDrawer(true)}  startIcon={<BarChartIcon />} sx={{ backgroundColor:"#1976d2","&:hover":{backgroundColor:"#1565c0",borderRadius:3,textTransform:"none",fontWeight:"bold",px:2.5}}}>
+      <Button variant="contained" onClick={toggleDrawer(true)}  startIcon={<BarChartIcon />} 
+      sx={{ height: 50}}
+      // sx={{ backgroundColor:"#1976d2","&:hover":{backgroundColor:"#1565c0",borderRadius:3,textTransform:"none",fontWeight:"bold",px:2.5}}}
+      >
         Stats
       </Button>
 
