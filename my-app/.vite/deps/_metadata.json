@@ -1,0 +1,73 @@
+{
+  "hash": "54feffac",
+  "configHash": "ac59eac2",
+  "lockfileHash": "3000988d",
+  "browserHash": "b5dbc4e7",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "799e6689",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "8bde303a",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "e9ea7f06",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "ca7b8ee7",
+      "needsInterop": false
+    },
+    "@mui/material/Button": {
+      "src": "../../node_modules/@mui/material/esm/Button/index.js",
+      "file": "@mui_material_Button.js",
+      "fileHash": "24543919",
+      "needsInterop": false
+    },
+    "@mui/icons-material/Add": {
+      "src": "../../node_modules/@mui/icons-material/esm/Add.js",
+      "file": "@mui_icons-material_Add.js",
+      "fileHash": "99008039",
+      "needsInterop": false
+    },
+    "@mui/material": {
+      "src": "../../node_modules/@mui/material/esm/index.js",
+      "file": "@mui_material.js",
+      "fileHash": "769187d6",
+      "needsInterop": false
+    },
+    "formik": {
+      "src": "../../node_modules/formik/dist/formik.esm.js",
+      "file": "formik.js",
+      "fileHash": "6cf346a4",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-VO3C5Q6N": {
+      "file": "chunk-VO3C5Q6N.js"
+    },
+    "chunk-K35MWTXD": {
+      "file": "chunk-K35MWTXD.js"
+    },
+    "chunk-TYPOV7AR": {
+      "file": "chunk-TYPOV7AR.js"
+    },
+    "chunk-ORVZ2VWC": {
+      "file": "chunk-ORVZ2VWC.js"
+    },
+    "chunk-ZZLEEZYP": {
+      "file": "chunk-ZZLEEZYP.js"
+    }
+  }
+}

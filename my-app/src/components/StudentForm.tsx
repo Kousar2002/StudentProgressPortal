@@ -11,8 +11,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate,useLocation } from "react-router-dom";
 interface CardData {
   dropdown: string;
   telugu: string;
@@ -46,6 +45,8 @@ const initialValues: StudentInfo = {
 
 const StudentForm: React.FC = () => {
   const navigate = useNavigate();
+  const location=useLocation()
+  const student=location.state;
   const [students, setStudents] = useState<StudentInfo[]>([]);
   const [showadd, setShowAdd] = useState<boolean>(false);
   const [showdel, setShowDel] = useState<boolean>(true);
@@ -55,6 +56,7 @@ const StudentForm: React.FC = () => {
       setStudents(JSON.parse(stored));
     }
   }, []);
+  // console.log(state);
   const options = ["Mid1", "Mid2", "Mid3"];
   const formik = useFormik<StudentInfo>({
     initialValues,
@@ -145,17 +147,23 @@ const StudentForm: React.FC = () => {
       console.log(values.rollno+"-"+values.class);
       console.log(typeof (values.rollno+"-"+values.class))
       console.log(students);
-      const currentId=values.class+"-"+values.rollno
-      students.map((val,ind)=>{
-        console.log(val)
-        // if(val.id===(currentId)){
-
-        // }
-      })
+      const currentId=values.class+"-"+values.rollno;
+      if(student){
+        const index=students.findIndex((s)=>s.id===currentId);
+        if(index !== -1){
+          students[index]={...students[index],...values};
+          alert("Student update successfully");
+        }else{
+          students.push({...values,id:currentId});
+          alert("Student added successfully")
+        }
+          localStorage.setItem("students", JSON.stringify(students));
+        navigate("/")
+      }else{
       const filterarr=students.filter((val,ind)=>val.id==currentId);
       if(filterarr.length>0){
         alert("student with id already exist");
-      }
+      }else{
       const newStudent={
         ...values,
         id:currentId
@@ -165,6 +173,8 @@ const StudentForm: React.FC = () => {
       setStudents(updatedStudents);
       localStorage.setItem("students", JSON.stringify(updatedStudents));
       navigate("/");
+    }
+  }
     },
     validateOnChange: true,
     validateOnBlur: true,
@@ -235,6 +245,16 @@ const StudentForm: React.FC = () => {
       setShowAdd(false);
     }
   };
+  console.log(student);
+  useEffect(()=>{
+    if(student){
+       formik.setValues(student);
+    }
+
+  },[])
+  // if(student){
+  //   formik.setValues(student);
+  // }
   return (
     <Paper
       elevation={4}
@@ -251,11 +271,11 @@ const StudentForm: React.FC = () => {
               label="Name"
               name="name"
               value={formik.values.name}
-              onChange={(e) => {
-                formik.handleChange(e);
-                formik.setFieldTouched(e.target.name, true, true);
-              }}
-              // onChange={formik.handleChange}
+              // onChange={(e) => {
+              //   formik.handleChange(e);
+              //   formik.setFieldTouched(e.target.name, true, true);
+              // }}
+              onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={!!formik.touched.name && !!formik.errors.name}
               helperText={formik.touched.name && formik.errors.name}
@@ -267,11 +287,11 @@ const StudentForm: React.FC = () => {
               type="text"
               //   type="number"
               value={formik.values.rollno}
-              onChange={(e) => {
-                formik.handleChange(e);
-                formik.setFieldTouched(e.target.name, true, true);
-              }}
-              // onChange={formik.handleChange}
+              // onChange={(e) => {
+              //   formik.handleChange(e);
+              //   formik.setFieldTouched(e.target.name, true, true);
+              // }}
+              onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={!!formik.touched.rollno && !!formik.errors.rollno}
               helperText={formik.touched.rollno && formik.errors.rollno}
